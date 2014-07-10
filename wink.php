@@ -15,4 +15,6 @@ $account = new Account(
 
 $account->login();
 
+print_r($account->info());
 print_r($account->devices());
+print_r($account->services());

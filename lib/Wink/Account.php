@@ -8,6 +8,7 @@ namespace Wink;
 
 require_once 'lib/Utility/HTTP.php';
 require_once 'lib/Wink/Devices.php';
+require_once 'lib/Wink/Services.php';
 
 use Utility\HTTP;
 use Wink\Devices;
@@ -138,5 +139,19 @@ class Account
         return $devices->devices();
         
     } // end devices()
+    
+    
+    /**
+     * Get a list of services on this account
+     *
+     * @return array
+     */
+    public function services()
+    {
+        $services = new Services($this);
+        
+        return $services->services();
+        
+    } // end services()
     
 } // end class

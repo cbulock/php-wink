@@ -1,38 +1,33 @@
 <?php
 /**
- * Connected device representation (generic/parent)
+ * Connected service representation (generic/parent)
  *
  * @author Richard Sonnen <richard@richardsonnen.com>
  */
 namespace Wink;
 
-class Device
+class Service
 {
     /**
      * Our account
      */
     protected $_account;
-    
+
     /**
-     * Type of device
-     */
-    protected $_type;
-    
-    /**
-     * Name of the device
+     * Name of the service
      */
     protected $_name;
     
     /**
-     * ID of the device
+     * Type of service
      */
-    protected $_id;
+    protected $_type;
     
     /**
-     * Model of device
+     * ID of the service
      */
-    protected $_model;
-    
+    protected $_id;
+
     /**
      * Raw Wink data for debugging
      */
@@ -42,7 +37,7 @@ class Device
      * Constructor
      *
      * Optionally initialize the object
-     * @param Wink\Account $account Wink account this device is part of
+     * @param Wink\Account $account Wink account this service is part of
      * @param array        $data Optional initialization data
      */
     public function __construct($account, $data = array())
@@ -53,9 +48,8 @@ class Device
             
     } // end __construct()
     
-    
     /**
-     * Getter for the name of this device
+     * Getter for the name of this service
      *
      * @return string
      */
@@ -64,7 +58,6 @@ class Device
         return $this->_name;
         
     } // end get_name()
-    
     
     /**
      * Getter for the type of this device
@@ -78,7 +71,7 @@ class Device
     } // end get_type()
     
     /**
-     * Getter for the ID for this device
+     * Getter for the ID for this service
      *
      * @return string
      */
@@ -87,17 +80,6 @@ class Device
         return $this->_id;
         
     } // end get_id()
-    
-    /**
-     * Getter for model of this device
-     *
-     * @return string
-     */
-    public function get_model()
-    {
-        return $this->_model;
-        
-    } // end get_model()
     
     /**
      * Getter for the raw Wink data
@@ -111,28 +93,16 @@ class Device
     } // end get_raw()
     
     /**
-     * Initialize the device from a data array
+     * Initialize the service from a data array
      *
      * @param array $data Initialization data
      */
     protected function _initialize($data)
     {
-        // base version just extracts the type, name and ID
         $this->_name = $data['name'];
+        $this->_type = $data['service'];
+        $this->_id = $data['linked_service_id'];
         
-        $this->_model = $data['manufacturer_device_model'];
-        
-        // IDs are obnoxious because they're named by type like 'camera_id', 'hub_id', etc.
-        // There are also other _id fields...
-        foreach($data as $key => $value) {
-            $matches = array();
-            if(preg_match('/^(.+)_id$/', $key, $matches) && empty($this->_id)) {
-                $this->_id = $value;
-                $this->_type = $matches[1];
-            }
-        }
-        
-        // keep the original data too for right now
         $this->_raw = $data;
         
     } // end _initialize()
