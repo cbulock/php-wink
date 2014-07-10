@@ -9,9 +9,9 @@ namespace Wink;
 require_once 'lib/Utility/HTTP.php';
 require_once 'lib/Wink/Devices.php';
 require_once 'lib/Wink/Services.php';
+require_once 'lib/Wink/Channels.php';
 
 use Utility\HTTP;
-use Wink\Devices;
 
 class Account
 {
@@ -153,5 +153,19 @@ class Account
         return $services->services();
         
     } // end services()
+    
+    
+    /**
+     * Get a list of channels on this account
+     *
+     * @return array
+     */
+    public function channels()
+    {
+        $channels = new Channels($this);
+        
+        return $channels->channels();
+        
+    } // end channels()
     
 } // end class
