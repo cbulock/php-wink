@@ -1,6 +1,6 @@
 <?php
 /**
- * HTTP utility to get/post data via cURL0000
+ * HTTP utility to get/post data via cURL
  *
  * @author Richard Sonnen <richard@richardsonnen.com>
  */
@@ -62,7 +62,7 @@ class HTTP
         curl_close($ch);
                
         if($results['http_code'] != '200') {
-            throw new \RuntimeException("Unable to GET: " . $results['error_message']);
+            throw new \RuntimeException("Unable to GET: " . print_r($results, true));
         }
 
         $data = json_decode($results['response_body'], true);
@@ -80,8 +80,8 @@ class HTTP
      * Utility function to make an HTTP POST call
      *
      * @param string $url   URL to POST to
-     * @param array  $data  Data to POST as JSON
      * @param string $token OAuth Bearer token (optional)
+     * @param array  $data  Data to POST as JSON
      *
      * @return array
      */
@@ -128,7 +128,7 @@ class HTTP
         curl_close($ch);
         
         if($results['http_code'] != '200') {
-            throw new \RuntimeException("Unable to POST: " . print_r($results, true) . $results['error_message']);
+            throw new \RuntimeException("Unable to POST: " . print_r($results, true));
         }
 
         $info = json_decode($results['response_body'], true);

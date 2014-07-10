@@ -37,8 +37,9 @@ class Service
      * Constructor
      *
      * Optionally initialize the object
+     *
      * @param Wink\Account $account Wink account this service is part of
-     * @param array        $data Optional initialization data
+     * @param array        $data    Optional initialization data
      */
     public function __construct($account, $data = array())
     {
@@ -96,6 +97,8 @@ class Service
      * Initialize the service from a data array
      *
      * @param array $data Initialization data
+     *
+     * @return null
      */
     protected function _initialize($data)
     {

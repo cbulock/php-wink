@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="OtterSugar" default="build">
+    <target name="build" depends="clean,installdependencies" />
+    <target name="test" depends="build,phpcs,phpunit" />
+
+    <target name="clean" description="Remove build artifacts">
+        <delete dir="${basedir}/build"/>
+    </target>
+
+    <target name="installdependencies">
+        <exec executable="php" failonerror="true">
+            <arg value="${basedir}/bin/composer.phar" />
+            <arg value="install" />
+        </exec>
+    </target>
+
+    <target name="updatedependencies">
+        <exec executable="php" failonerror="true">
+            <arg value="${basedir}/bin/composer.phar" />
+            <arg value="update" />
+        </exec>
+    </target>
+
+    <target name="lint">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
+            <fileset dir="${basedir}">
+                <include name="**/*.php" />
+                <exclude name="**/lib/vendor/**" />
+                <modified />
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="phpunit" depends="lint">
+        <exec executable="${basedir}/bin/phpunit" failonerror="true">
+            <arg value="--debug" />
+            <arg value="${basedir}/tests" />
+        </exec>
+    </target>
+
+    <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer" depends="lint">
+        <mkdir dir="${basedir}/build" />
+        <mkdir dir="${basedir}/build/logs" />
+        <exec executable="${basedir}/bin/phpcs">
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+            <arg value="--standard=phpcs.xml" />
+            <arg value="-p" />
+            <arg value="${basedir}" />
+        </exec>
+    </target>
+
+</project>

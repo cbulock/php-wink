@@ -59,7 +59,8 @@ class Devices
             
             // see if we can specialize it a bit
             if(isset($this->_device_map[$device->get_type()])) {
-                $device = new $this->_device_map[$device->get_type()]($this->_account, $device_data);
+                $class = $this->_device_map[$device->get_type()];
+                $device = new $class($this->_account, $device_data);
             }
             
             $devices[] = $device;

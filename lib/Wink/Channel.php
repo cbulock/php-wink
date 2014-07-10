@@ -42,8 +42,9 @@ class Channel
      * Constructor
      *
      * Optionally initialize the object
+     *
      * @param Wink\Account $account Wink account this channel is part of
-     * @param array        $data Optional initialization data
+     * @param array        $data    Optional initialization data
      */
     public function __construct($account, $data = array())
     {
@@ -117,6 +118,8 @@ class Channel
      * Initialize the channel from a data array
      *
      * @param array $data Initialization data
+     *
+     * @return null
      */
     protected function _initialize($data)
     {

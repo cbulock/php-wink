@@ -42,8 +42,9 @@ class Device
      * Constructor
      *
      * Optionally initialize the object
+     *
      * @param Wink\Account $account Wink account this device is part of
-     * @param array        $data Optional initialization data
+     * @param array        $data    Optional initialization data
      */
     public function __construct($account, $data = array())
     {
@@ -114,6 +115,8 @@ class Device
      * Initialize the device from a data array
      *
      * @param array $data Initialization data
+     *
+     * @return null
      */
     protected function _initialize($data)
     {

@@ -1,1 +1,7 @@
 config.json
+cache.properties
+composer.lock
+build
+lib/vendor
+bin/phpcs
+bin/phpunit

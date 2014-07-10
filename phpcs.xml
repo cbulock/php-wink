@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <description>The coding standards for PHP_CodeSniffer.</description>
+
+    <!-- exclusions -->
+    <exclude-pattern>lib/vendor</exclude-pattern>
+    <exclude-pattern>bin</exclude-pattern>
+    
+
+    <!-- Include the Zend standard with some exclusions -->
+    <rule ref="Zend">
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.NotCamelCaps" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.MemberVarNotCamelCaps" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.StringVarNotCamelCaps" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.ContainsNumbers" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.MemberVarContainsNumbers" />
+        <exclude name="Zend.NamingConventions.ValidVariableName.StringVarContainsNumbers" />
+        <exclude name="PEAR.ControlStructures.ControlSignature" />
+        <exclude name="PEAR.Commenting.ClassComment" />
+        <exclude name="PEAR.NamingConventions.ValidVariableName.PublicUnderscore" />
+        <exclude name="Squiz.Functions.GlobalFunction.Found" />
+    </rule>
+
+    <!-- set our max line length to something a bit more 21st century -->
+    <rule ref="Generic.Files.LineLength">
+            <properties>
+                    <property name="lineLimit" value="100"/>
+                    <property name="absoluteLineLimit" value="180"/>
+            </properties>
+    </rule>
+
+    <!-- add in some of PEAR's commenting rules -->
+    <rule ref="PEAR.Commenting.FunctionComment" />
+    <rule ref="PEAR.Commenting.InlineComment" />
+
+    <!-- require require_once to be used as a statement -->
+    <rule ref="PEAR.Files.IncludingFile" />
+
+    <!-- function calls cannot have spaces before the parens -->
+    <rule ref="PEAR.Functions.FunctionCallSignature" />
+
+    <!-- class names must start with an upper case letter and use underscores -->
+    <rule ref="PEAR.NamingConventions.ValidClassName" />
+
+    <!-- private attributes must start with an underscore -->
+    <rule ref="PEAR.NamingConventions.ValidVariableName" />
+
+    <!-- Control structures must be indented properly -->
+    <rule ref="Generic.WhiteSpace.ScopeIndent" />
+</ruleset>

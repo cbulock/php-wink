@@ -14,6 +14,8 @@ class LightBulb extends \Wink\Device
      * Overriden initializer to populate device-specific fields
      *
      * @param array $data Initialization data
+     *
+     * @return null
      */
     protected function _initialize($data)
     {
