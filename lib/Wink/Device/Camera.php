@@ -6,7 +6,7 @@
  */
 namespace Wink\Device;
 
-require_once 'lib/Wink/Device.php';
+require_once(realpath(__DIR__ . '/..') . '/Device.php'); // TODO: this whole thing needs to be using composer and autoload
 
 class Camera extends \Wink\Device
 {

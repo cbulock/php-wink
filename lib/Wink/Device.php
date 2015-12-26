@@ -27,6 +27,11 @@ class Device
      * ID of the device
      */
     protected $_id;
+
+    /**
+     * Icon for device
+     */
+    protected $_icon;
     
     /**
      * Model of device
@@ -75,7 +80,7 @@ class Device
     public function get_type()
     {
         return $this->_type;
-        
+
     } // end get_type()
     
     /**
@@ -88,6 +93,17 @@ class Device
         return $this->_id;
         
     } // end get_id()
+
+    /**
+     * Getter for the icon for this device
+     *
+     * @return string
+     */
+    public function get_icon()
+    {
+        return $this->_icon;
+        
+    } // end get_icon()
     
     /**
      * Getter for model of this device
@@ -123,17 +139,12 @@ class Device
         // base version just extracts the type, name and ID
         $this->_name = $data['name'];
         
-        $this->_model = $data['manufacturer_device_model'];
-        
-        // IDs are obnoxious because they're named by type like 'camera_id', 'hub_id', etc.
-        // There are also other _id fields...
-        foreach($data as $key => $value) {
-            $matches = array();
-            if(preg_match('/^(.+)_id$/', $key, $matches) && empty($this->_id)) {
-                $this->_id = $value;
-                $this->_type = $matches[1];
-            }
-        }
+        //not all devices have this info
+        if (isset($data['manufacturer_device_model'])) $this->_model = $data['manufacturer_device_model'];
+
+        $this->_id = $data['object_id'];
+        $this->_type = $data['object_type'];
+        $this->_icon = $data['icon_id'];
         
         // keep the original data too for right now
         $this->_raw = $data;

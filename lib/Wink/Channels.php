@@ -6,7 +6,7 @@
  */
 namespace Wink;
 
-require_once 'lib/Wink/Channel/Generic.php';
+require_once 'Channel/Generic.php';
 
 class Channels
 {

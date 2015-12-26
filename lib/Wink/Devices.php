@@ -6,9 +6,13 @@
  */
 namespace Wink;
 
-require_once 'lib/Wink/Device/Generic.php';
-require_once 'lib/Wink/Device/LightBulb.php';
-require_once 'lib/Wink/Device/Camera.php';
+require_once 'Device/Generic.php';
+require_once 'Device/LightBulb.php';
+require_once 'Device/BinarySwitch.php';
+require_once 'Device/Camera.php';
+require_once 'Device/GarageDoor.php';
+require_once 'Device/SensorPod.php';
+
 
 class Devices
 {
@@ -22,7 +26,10 @@ class Devices
      */
     private $_device_map = array(
         'light_bulb'    =>  '\\Wink\\Device\\LightBulb',
+        'binary_switch' =>  '\\Wink\\Device\\BinarySwitch',
         'camera'        =>  '\\Wink\\Device\\Camera',
+        'garage_door'   =>  '\\Wink\\Device\\GarageDoor',
+        'sensor_pod'    =>  '\\Wink\\Device\\SensorPod'
     );
     
     

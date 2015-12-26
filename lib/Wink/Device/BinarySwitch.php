@@ -1,6 +1,6 @@
 <?php
 /**
- * Connected lightbulb representation
+ * Connected binary_switch representation
  *
  * @author Cameron Bulock <cameron@bulock.com>
  */
@@ -8,15 +8,15 @@ namespace Wink\Device;
 
 require_once(realpath(__DIR__ . '/..') . '/Device.php'); // TODO: this whole thing needs to be using composer and autoload
 
-class LightBulb extends \Wink\Device
+class BinarySwitch extends \Wink\Device
 {
     /**
-     * Light status
+     * Switch status
      */
     protected $_powered;
     
     /**
-     * Getter for light status
+     * Getter for switch status
      *
      * @return bool
      */

@@ -6,7 +6,7 @@
  */
 namespace Wink\Channel;
 
-require_once 'lib/Wink/Channel.php';
+require_once(realpath(__DIR__ . '/..') . '/Channel.php'); // TODO: this whole thing needs to be using composer and autoload
 
 class Generic extends \Wink\Channel
 {

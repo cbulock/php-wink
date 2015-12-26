@@ -6,7 +6,7 @@
  */
 namespace Wink;
 
-require_once 'lib/Wink/Service/Generic.php';
+require_once 'Service/Generic.php';
 
 class Services
 {

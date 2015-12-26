@@ -8,6 +8,9 @@ namespace Utility;
 
 class HTTP
 {
+
+    protected $userAgent = 'Manufacturer/Darwin node/0.10.30 Wink/3.1.0';
+
     /**
      * Utility function to make an HTTP GET call
      *
@@ -24,6 +27,7 @@ class HTTP
         }
         
         $ch = curl_init();
+        curl_setopt($ch, CURLOPT_USERAGENT, $this->userAgent);
         curl_setopt($ch, CURLOPT_PORT, 443);
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, true);
@@ -93,6 +97,7 @@ class HTTP
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_USERAGENT, $this->userAgent);
 
         $headers = array(
             'Content-Type: application/json',

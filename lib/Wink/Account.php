@@ -6,10 +6,10 @@
  */
 namespace Wink;
 
-require_once 'lib/Utility/HTTP.php';
-require_once 'lib/Wink/Devices.php';
-require_once 'lib/Wink/Services.php';
-require_once 'lib/Wink/Channels.php';
+require_once(realpath(__DIR__ . '/..') . '/Utility/HTTP.php'); // TODO: this whole thing needs to be using composer and autoload
+require_once 'Devices.php';
+require_once 'Services.php';
+require_once 'Channels.php';
 
 use Utility\HTTP;
 
